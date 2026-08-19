@@ -1,3 +1,6 @@
+# Todo
+
+- [ ] align with repo name GlassesBeGone
 - [ ] green/black surveillances color scheme
 - [ ] add site notice to footer
 - [ ] add link to github (empty for now) to footer
