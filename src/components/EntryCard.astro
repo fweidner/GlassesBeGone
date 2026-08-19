@@ -1,0 +1,17 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import CategoryBadge from './CategoryBadge.astro';
+
+interface Props {
+  entry: CollectionEntry<'bans'>;
+}
+
+const { entry } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+
+<a class="entry-card" href={`${base}/bans/${entry.id}/`}>
+  <CategoryBadge category={entry.data.category} />
+  <h3>{entry.data.name}</h3>
+  {entry.data.address && <p class="address">{entry.data.address}</p>}
+</a>

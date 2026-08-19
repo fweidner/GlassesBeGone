@@ -1,0 +1,92 @@
+---
+interface MapEntry {
+  slug: string;
+  name: string;
+  lat: number;
+  lng: number;
+  address?: string;
+}
+
+interface Props {
+  entries: MapEntry[];
+}
+
+const { entries } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+
+<div id="ban-map" data-base={base} data-entries={JSON.stringify(entries)}></div>
+
+<script>
+  import L from 'leaflet';
+  import 'leaflet/dist/leaflet.css';
+  import 'leaflet.markercluster';
+  import 'leaflet.markercluster/dist/MarkerCluster.css';
+  import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
+  // `?url` forces Vite to hand back a plain URL string. Without it, Astro's
+  // asset pipeline intercepts these PNG imports and returns an
+  // { src, width, height } metadata object instead, which silently breaks
+  // Leaflet's icon URLs (they'd render as "[object Object]").
+  import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png?url';
+  import markerIcon from 'leaflet/dist/images/marker-icon.png?url';
+  import markerShadow from 'leaflet/dist/images/marker-shadow.png?url';
+
+  interface MapEntry {
+    slug: string;
+    name: string;
+    lat: number;
+    lng: number;
+    address?: string;
+  }
+
+  // Leaflet's default marker icon paths break under bundlers unless
+  // re-pointed at the bundled asset URLs explicitly.
+  delete (L.Icon.Default.prototype as unknown as { _getIconUrl?: unknown })._getIconUrl;
+  L.Icon.Default.mergeOptions({
+    iconRetinaUrl: markerIcon2x,
+    iconUrl: markerIcon,
+    shadowUrl: markerShadow,
+  });
+
+  const mapEl = document.getElementById('ban-map');
+
+  if (mapEl) {
+    const base = mapEl.dataset.base ?? '/';
+    const entries: MapEntry[] = JSON.parse(mapEl.dataset.entries ?? '[]');
+
+    const map = L.map(mapEl).setView([20, 0], 2);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      maxZoom: 19,
+    }).addTo(map);
+
+    const clusterGroup = L.markerClusterGroup();
+
+    for (const entry of entries) {
+      const marker = L.marker([entry.lat, entry.lng]);
+      const addressLine = entry.address ? `${entry.address}<br/>` : '';
+      marker.bindPopup(
+        `<strong>${entry.name}</strong><br/>${addressLine}<a href="${base}/bans/${entry.slug}/">View details</a>`
+      );
+      clusterGroup.addLayer(marker);
+    }
+
+    clusterGroup.addTo(map);
+
+    if (entries.length > 0) {
+      map.fitBounds(clusterGroup.getBounds(), { padding: [30, 30], maxZoom: 10 });
+    }
+  }
+</script>
+
+<style>
+  #ban-map {
+    height: 65vh;
+    min-height: 360px;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+  }
+</style>

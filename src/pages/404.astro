@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="Page not found — SmartglassesBanned">
+  <h1>Page not found</h1>
+  <p>The page you're looking for doesn't exist.</p>
+  <p><a href={base}>Back to the map</a></p>
+</BaseLayout>

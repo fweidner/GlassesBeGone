@@ -1,0 +1,26 @@
+---
+const base = import.meta.env.BASE_URL;
+---
+
+<footer class="site-footer">
+  <p>
+    SmartglassesBanned is a manually curated archive of news reporting on smart glasses bans.
+    Spot a ban that's missing? Add an entry as a Markdown file and open a pull request.
+  </p>
+  <p><a href={`${base}/site-notice/`}>Site notice</a></p>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--border);
+    margin-top: 2rem;
+  }
+
+  .site-footer p {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1.25rem 1rem;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+</style>

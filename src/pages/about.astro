@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="About — SmartglassesBanned">
+  <h1>About this project</h1>
+  <p>
+    SmartglassesBanned tracks real-world places, businesses, events, and jurisdictions that
+    have restricted or banned smart glasses — devices like Meta's Ray-Ban Display that can
+    record audio and video from frames that look like ordinary eyewear. Bans have been driven
+    mostly by privacy concerns: covert filming in bars, changing rooms, casinos, and other
+    spaces where recording isn't expected or welcome.
+  </p>
+
+  <h2>How entries are added</h2>
+  <p>
+    Every entry on this site is a Markdown file in the
+    <code>src/content/bans/</code> directory of this project's git repository, each backed by
+    a real news article. There's no automated scraping or user-submission form — entries are
+    added manually, one file per ban, and reviewed like any other code change before merging.
+  </p>
+
+  <h2>Contributing</h2>
+  <p>
+    Found a smart glasses ban that's missing? Add a new Markdown file to
+    <code>src/content/bans/</code> following the format of the existing entries (name,
+    category, coordinates, source URL, and a short summary), then open a pull request.
+  </p>
+</BaseLayout>

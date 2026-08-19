@@ -1,0 +1,44 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CategoryBadge from '../../components/CategoryBadge.astro';
+
+export async function getStaticPaths() {
+  const allBans = await getCollection('bans');
+  return allBans.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<BaseLayout title={`${entry.data.name} — SmartglassesBanned`} description={entry.data.name}>
+  <article>
+    <CategoryBadge category={entry.data.category} />
+    <h1>{entry.data.name}</h1>
+    {entry.data.address && <p class="address">{entry.data.address}</p>}
+    {
+      entry.data.banDate && (
+        <p class="date">
+          Reported:{' '}
+          {entry.data.banDate.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })}
+        </p>
+      )
+    }
+    <div class="content">
+      <Content />
+    </div>
+    <p>
+      <a href={entry.data.sourceUrl} target="_blank" rel="noopener noreferrer">
+        Read the source{entry.data.sourceName ? `: ${entry.data.sourceName}` : ''}
+      </a>
+    </p>
+  </article>
+</BaseLayout>

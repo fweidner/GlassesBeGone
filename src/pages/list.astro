@@ -1,0 +1,44 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EntryCard from '../components/EntryCard.astro';
+
+const allBans = await getCollection('bans');
+const sorted = [...allBans].sort(
+  (a, b) => (b.data.banDate?.getTime() ?? 0) - (a.data.banDate?.getTime() ?? 0)
+);
+const categories = [...new Set(allBans.map((entry) => entry.data.category))].sort();
+---
+
+<BaseLayout title="All entries — SmartglassesBanned">
+  <h1>All entries</h1>
+
+  <label for="category-filter">Filter by category</label>
+  <select id="category-filter">
+    <option value="all">All categories</option>
+    {categories.map((category) => <option value={category}>{category}</option>)}
+  </select>
+
+  <div class="card-grid">
+    {
+      sorted.map((entry) => (
+        <div class="filterable" data-category={entry.data.category}>
+          <EntryCard entry={entry} />
+        </div>
+      ))
+    }
+  </div>
+</BaseLayout>
+
+<script>
+  const select = document.getElementById('category-filter') as HTMLSelectElement | null;
+  const items = document.querySelectorAll<HTMLElement>('.filterable');
+
+  select?.addEventListener('change', () => {
+    const value = select.value;
+    items.forEach((item) => {
+      const matches = value === 'all' || item.dataset.category === value;
+      item.style.display = matches ? '' : 'none';
+    });
+  });
+</script>

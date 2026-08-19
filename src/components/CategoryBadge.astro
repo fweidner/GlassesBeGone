@@ -1,0 +1,19 @@
+---
+interface Props {
+  category: string;
+}
+
+const { category } = Astro.props;
+
+const colors: Record<string, string> = {
+  business: '#db2777',
+  authority: '#4f46e5',
+  education: '#059669',
+  event: '#c2410c',
+  region: '#0891b2',
+};
+
+const color = colors[category] ?? '#6b7280';
+---
+
+<span class="badge" style={`background:${color}`}>{category}</span>

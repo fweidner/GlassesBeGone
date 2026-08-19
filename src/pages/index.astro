@@ -1,0 +1,39 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import MapView from '../components/MapView.astro';
+import EntryCard from '../components/EntryCard.astro';
+
+const allBans = await getCollection('bans');
+const sorted = [...allBans].sort(
+  (a, b) => (b.data.banDate?.getTime() ?? 0) - (a.data.banDate?.getTime() ?? 0)
+);
+const recent = sorted.slice(0, 6);
+
+const mapEntries = allBans.map((entry) => ({
+  slug: entry.id,
+  name: entry.data.name,
+  lat: entry.data.lat,
+  lng: entry.data.lng,
+  address: entry.data.address,
+}));
+---
+
+<BaseLayout title="SmartglassesBanned — where smart glasses have been banned">
+  <section>
+    <h1>Where smart glasses have been banned</h1>
+    <p>
+      A map and archive of real venues, businesses, and jurisdictions that have restricted
+      or banned smart glasses like Meta Ray-Ban, sourced from news coverage.
+    </p>
+  </section>
+
+  <MapView entries={mapEntries} />
+
+  <section>
+    <h2>Recently added</h2>
+    <div class="card-grid">
+      {recent.map((entry) => <EntryCard entry={entry} />)}
+    </div>
+  </section>
+</BaseLayout>

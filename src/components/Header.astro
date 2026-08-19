@@ -1,0 +1,52 @@
+---
+const base = import.meta.env.BASE_URL;
+---
+
+<header class="site-header">
+  <nav>
+    <a class="brand" href={base}>SmartglassesBanned</a>
+    <div class="links">
+      <a href={base}>Map</a>
+      <a href={`${base}/list/`}>List</a>
+      <a href={`${base}/about/`}>About</a>
+    </div>
+  </nav>
+</header>
+
+<style>
+  .site-header {
+    border-bottom: 1px solid var(--border);
+  }
+
+  nav {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .brand {
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--fg);
+  }
+
+  .links {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .links a {
+    text-decoration: none;
+    color: var(--fg);
+    font-size: 0.95rem;
+  }
+
+  .links a:hover {
+    color: var(--accent);
+  }
+</style>
