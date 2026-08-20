@@ -5,5 +5,5 @@ import { defineConfig } from 'astro/config';
 // Pages, unless you're using a custom domain (in which case set base to '/').
 export default defineConfig({
   site: 'https://fweidner.github.io',
-  base: '/SmartglassesBanned',
+  base: '/GlassesBeGone',
 });
