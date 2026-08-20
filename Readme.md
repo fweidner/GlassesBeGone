@@ -1,4 +1,4 @@
-# SmartglassesBanned
+# GlassesBeGone
 
 A map and archive of real venues, businesses, events, and jurisdictions that have banned or
 restricted smart glasses (e.g. Meta Ray-Ban), sourced from news coverage.
