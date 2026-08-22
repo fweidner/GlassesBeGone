@@ -15,10 +15,10 @@ git commit -m "Initial site"
 ```
 
 Then create a repo on GitHub (e.g. via the "New repository" button, name it
-`SmartglassesBanned` to match the default config) and push:
+`GlassesBeGone` to match the default config) and push:
 
 ```sh
-git remote add origin https://github.com/<your-username>/SmartglassesBanned.git
+git remote add origin https://github.com/<your-username>/GlassesBeGone.git
 git branch -M main
 git push -u origin main
 ```
@@ -30,11 +30,11 @@ Open `astro.config.mjs` and replace the placeholders:
 ```js
 export default defineConfig({
   site: 'https://<your-username>.github.io',
-  base: '/SmartglassesBanned', // match your repo name exactly (case-sensitive)
+  base: '/GlassesBeGone', // match your repo name exactly (case-sensitive)
 });
 ```
 
-- If you're using a **custom domain** instead of `<username>.github.io/SmartglassesBanned`,
+- If you're using a **custom domain** instead of `<username>.github.io/GlassesBeGone`,
   set `base: '/'` and add a `public/CNAME` file containing your domain — see step 5.
 - Commit and push this change.
 
@@ -51,7 +51,7 @@ publishes it to Pages. Watch it run under the repo's **Actions** tab. Once it fi
 (green check), the site is live at:
 
 ```
-https://<your-username>.github.io/SmartglassesBanned/
+https://<your-username>.github.io/GlassesBeGone/
 ```
 
 You can also trigger a rebuild manually at any time from **Actions → Build and Deploy →
@@ -59,7 +59,7 @@ Run workflow** — useful after adding a new entry without any other code change
 
 ## 5. (Optional) Custom domain
 
-1. Add a `public/CNAME` file containing just your domain, e.g. `smartglassesbanned.com`.
+1. Add a `public/CNAME` file containing just your domain, e.g. `GlassesBeGone.com`.
 2. In your DNS provider, add a `CNAME` record pointing your subdomain at
    `<your-username>.github.io` (or `A`/`ALIAS` records for an apex domain — see
    [GitHub's custom domain docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site)).

@@ -4,6 +4,6 @@ import { defineConfig } from 'astro/config';
 // to your repo name (e.g. '/SmartglassesBanned') before deploying to GitHub
 // Pages, unless you're using a custom domain (in which case set base to '/').
 export default defineConfig({
-  site: 'https://your-username.github.io',
-  base: '/SmartglassesBanned',
+  site: 'https://fweidner.github.io',
+  base: '/GlassesBeGone',
 });
