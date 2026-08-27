@@ -7,7 +7,9 @@ Static site built with [Astro](https://astro.build), [Leaflet](https://leafletjs
 OpenStreetMap tiles. No database, no backend, no user-submission flow — entries live as
 Markdown files in this repo and are deployed to GitHub Pages on every push to `main`.
 
-Some code generated with Claude Code Opus 5.8.
+Some code generated with Claude Code Opus 5.8. 
+
+All entries are reviewed manually.
 
 ## Testing locally
 
