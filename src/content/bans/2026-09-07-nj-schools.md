@@ -1,8 +1,10 @@
+---
+slug: nj-schools
 name: Student Useof Internet-Enabled Devices
 category: authority
 lat: 40.206083
 lng: -74.763594
-address: Pin points to NJ Department of Education
+address: "Pin points to NJ Department of Education"
 banDate: 2029-09-07
 sourceUrl: https://www.nj.gov/education/safety/sandp/digital/docs/GuidanceStudentsInternetEnabledDevices.pdf
 sourceName: nj.gov
