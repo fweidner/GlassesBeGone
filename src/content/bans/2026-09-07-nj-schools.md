@@ -1,6 +1,6 @@
 ---
 slug: nj-schools
-name: Student Useof Internet-Enabled Devices
+name: New Jersey Department of Education
 category: authority
 lat: 40.206083
 lng: -74.763594
