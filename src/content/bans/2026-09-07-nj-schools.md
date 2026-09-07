@@ -1,7 +1,7 @@
 ---
 slug: nj-schools
 name: New Jersey Department of Education
-category: authority
+category: education
 lat: 40.206083
 lng: -74.763594
 address: "Pin points to NJ Department of Education"
