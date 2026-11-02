@@ -1,8 +1,10 @@
+---
+slug: brisbane-public-pools
 name: Brisbane City Council's public pools
 category: authority
 lat: -27.470699
 lng: 153.022395
-address: Pin points to Brisbane City Council (representative)
+address: "Pin points to Brisbane City Council (representative)"
 banDate: 2026-09-07
 sourceUrl: https://www.abc.net.au/news/2026-09-06/brisbane-council-ban-smart-glasses-regulation-privacy/107098122
 sourceName: ABC.net

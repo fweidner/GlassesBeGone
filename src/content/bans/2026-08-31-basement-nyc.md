@@ -1,7 +1,7 @@
 ---
 slug: basement-nyc
 name: Basement 
-category: entertainment
+category: business
 lat: 40.715505
 lng: -73.914178
 address: "New York nightclub Basement"
